@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+.accordion-title{
+    color: black; !important
+}
 .po-results-item{
     padding: 1rem;
     margin: 0;
@@ -17,4 +20,5 @@
     margin-bottom: 0;
     line-height: 0.8rem;
     font-size: 0.8rem;
+    font-we
 }
