@@ -19,8 +19,8 @@ $.getJSON("Nomenclator_FTS.json", function(json) {
                     print();
                 }
                 function print(){
-                    $("#po-results").append(
-                        '<li class="accordion-item" data-accordion-item>'
+                    var box;
+                    box = '<li class="accordion-item" data-accordion-item>'
                             +'<a href="#" class="accordion-title">'
                                 +json[i].codi
                                 + ' - '
@@ -32,14 +32,24 @@ $.getJSON("Nomenclator_FTS.json", function(json) {
                                     + '<dt> Codi</dt><dd>' + json[i].codi +'</dd>'
                                     + '<dt> Descripció</dt><dd>' + json[i].descripcio +'</dd>'
                                     + '<dt> Normativa</dt><dd>' + json[i].normativa +'</dd>'
-                                    + '<dt> Preu normal</dt><dd>' + json[i].preu +'€</dd>'
-                                    + '<dt> Preu descompte</dt><dd>' + json[i].preu_descompte +'€</dd>'
-                                    + '<dt> Retirada carnet</dt><dd>' + json[i].retirada_carnet +'</dd>'
-                                    + '<dt> Retirada punts</dt><dd>' + json[i].retirada_punts +'</dd>'
-                                    + '<dt> Vigent</dt><dd>' + json[i].vigent +'</dd>'
-                                +'</dl>'
-                            +'</div>'
-                        +'</li>');
+                    if(json[i].preu.length > 0){
+                        box = box + '<dt> Preu normal</dt><dd>' + json[i].preu +'€</dd>'
+                    }
+                    if(json[i].preu_descompte.length > 0){
+                        box = box + '<dt> Preu descompte</dt><dd>' + json[i].preu_descompte +'€</dd>'
+                    }
+                    if(json[i].retirada_carnet.length > 0){
+                        box = box + '<dt> Retirada carnet</dt><dd>' + json[i].retirada_carnet +'</dd>'
+                    }
+                    if(json[i].retirada_punts.length > 0){
+                        box = box + '<dt> Retirada punts</dt><dd>' + json[i].retirada_punts +'</dd>'
+                    }
+                    if(json[i].retirada_punts.length > 0){
+                        box = box + '<dt> Vigent</dt><dd>' + json[i].vigent +'</dd>'
+                    }
+                    box = box  + '</dl></div></li>'
+                    
+                    $("#po-results").append(box)
                 }
             }
             Foundation.reInit('accordion');
